@@ -7,7 +7,8 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.lft_pneu_cmd;
@@ -19,10 +20,19 @@ public class lft_pneu_subs extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  private Solenoid grabber = new Solenoid(RobotMap.lft_solenoid_grab);
+  private DoubleSolenoid grabber = new DoubleSolenoid(0,1);
+  private boolean is_enabled = false;
   
   public void toggle_grabber() {
-    grabber.set(!grabber.get());
+    if (is_enabled) {
+      grabber.set(Value.kReverse);
+      is_enabled = !is_enabled;
+    }
+    else {
+      grabber.set(Value.kForward);
+      is_enabled = !is_enabled;
+    }
+    System.out.println("Toggling Grabber");
   }
 
   @Override

@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -17,8 +18,10 @@ public class Robot extends TimedRobot {
   public static lft_manual_subs lift_subsys = new lft_manual_subs();
   public static dt_pneu_subs dt_pneu;
   public static limelight_subs limelight;
-  public static lft_pneu_subs lft_pneums; // these probably need constructors
-  public static jump_subs kamikaze;
+  public static lft_pneu_subs lft_pneums = new lft_pneu_subs(); // these probably need constructors
+  public static jump_subs kamikaze = new jump_subs();
+
+//  private Compressor compressor = new Compressor(0); // default pcm id
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

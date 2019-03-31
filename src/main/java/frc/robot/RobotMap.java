@@ -18,9 +18,9 @@ public class RobotMap {
   public static final int dt_right_slave_2 = 3;
   //public static final int dt_right_slave_3;
 
-  public static final int dt_left_master = 2;
-  public static final int dt_left_slave_1 = 1;
-  public static final int dt_left_slave_2 = 3;
+  public static final int dt_left_master = 5;
+  public static final int dt_left_slave_1 = 6;
+  public static final int dt_left_slave_2 = 4;
   //public static final int dt_left_slave_3;
   
   public static final int lft_lift_master = 8;
@@ -30,8 +30,8 @@ public class RobotMap {
   public static final int lft_gamepad = 1;
 
   public static final int dt_solenoid = 1;
-  public static final int lft_solenoid_grab = 2;
-  public static final int jp_solenoid = 3;
-  public static final int jp2_solenoid = 4;
+  public static final int lft_solenoid_grab = 7;
+  public static final int jp_solenoid = 6;
+  public static final int jp2_solenoid = 7;
 
 }

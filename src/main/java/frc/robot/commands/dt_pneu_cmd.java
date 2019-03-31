@@ -21,10 +21,11 @@ public class dt_pneu_cmd extends Command {
   protected void execute() {
     if (Robot.m_oi.drt_gamepad.getBumperPressed(Hand.kLeft)) {
       Robot.dt_pneu.toggleGearShift();
-    }
-    if (Robot.m_oi.drt_gamepad.getStickButtonPressed(Hand.kLeft)) {
+    }/*
+    
+    if (Robot.m_oi.drt_gamepad.getAButtonPressed()) {
       Robot.dt_pneu.toggle_compressor();
-    }
+    }*/
   }
 
   // Make this return true when this Command no longer needs to run execute()

@@ -23,12 +23,11 @@ public class drivetrain_subs extends Subsystem {
   public VictorSPX left_slave_2 = new VictorSPX(RobotMap.dt_left_slave_2);
   //private VictorSPX left_slave_3 = new VictorSPX(RobotMap.dt_left_slave_3); // direction needs to be configured -- probably same as master
 
+  //public DifferentialDrive drive = new DifferentialDrive(left_master, right_master);
   public DifferentialDrive drive = new DifferentialDrive(left_master, right_master);
-
-  private double turn_limiter = .5;
+  private double turn_limiter = .70;
   
   public drivetrain_subs() {
-    System.out.println("state");
 
     right_master.setInverted(false);
     right_slave_1.setInverted(true);
@@ -45,15 +44,20 @@ public class drivetrain_subs extends Subsystem {
     left_slave_2.follow(left_master);
   }
   
-  public void cheezy_scheme(double move, double turn) {    
+  public void cheezy_scheme(double move, double turn) {
+    
+    SmartDashboard.putNumber("move", move);
+    
+
     drive.curvatureDrive(
       move,
-      turn*=turn_limiter,
+      turn*=-turn_limiter,
       true
     );
   }
 
   public void debug_dt_voltages() {
+    /*
     SmartDashboard.putNumber("DT:right Master", right_master.getMotorOutputVoltage());
     SmartDashboard.putNumber("DT:right Slave 1", right_master.getMotorOutputVoltage());
     SmartDashboard.putNumber("DT:right Slave 2", right_master.getMotorOutputVoltage());
@@ -61,6 +65,7 @@ public class drivetrain_subs extends Subsystem {
     SmartDashboard.putNumber("DT:left Master", left_master.getMotorOutputVoltage());
     SmartDashboard.putNumber("DT:left Slave 1", left_master.getMotorOutputVoltage());
     SmartDashboard.putNumber("DT:left Slave 2", left_master.getMotorOutputVoltage());
+    */
   }
 
   @Override

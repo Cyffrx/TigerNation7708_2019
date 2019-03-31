@@ -22,8 +22,9 @@ public class lft_manual_cmd extends Command {
   protected void execute() {
 
     Robot.lift_subsys.set_lift(
-      ((Math.abs(Robot.m_oi.lft_gamepad.getY(Hand.kLeft)) > 0)) ? 
-        Robot.m_oi.lft_gamepad.getY(Hand.kLeft) : Robot.m_oi.lft_gamepad.getY(Hand.kRight)
+      (Robot.m_oi.lft_gamepad.getTriggerAxis(Hand.kLeft) > 0) ? 
+        -Robot.m_oi.lft_gamepad.getTriggerAxis(Hand.kLeft) : Robot.m_oi.lft_gamepad.getTriggerAxis(Hand.kRight),
+        Robot.m_oi.lft_gamepad.getBumper(Hand.kLeft)
     );
 
   }

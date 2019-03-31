@@ -26,6 +26,7 @@ public class jump_cmd extends Command {
   @Override
   protected void execute() {
     if (Robot.m_oi.drt_gamepad.getAButtonPressed()) {
+      System.out.println("Pray");
       Robot.kamikaze.kamikaze();
     }
   }

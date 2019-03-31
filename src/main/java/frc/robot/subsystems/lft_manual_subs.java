@@ -17,14 +17,17 @@ public class lft_manual_subs extends Subsystem {
   public TalonSRX lift_master = new TalonSRX(RobotMap.lft_lift_master);
   public VictorSPX lift_slave = new VictorSPX(RobotMap.lft_lift_master);
 
-  public lft_manual_subs() {
-    lift_master.configFactoryDefault();
-    lift_slave.configFactoryDefault();
+  public lft_manual_subs() {  
     lift_slave.follow(lift_master);
   }
 
-  public void set_lift(double speed) {
-    lift_master.set(ControlMode.PercentOutput, speed);
+  public void set_lift(double speed, boolean turbo) {
+    if (turbo) {
+      lift_master.set(ControlMode.PercentOutput, speed*.3);
+    }
+    else {
+      lift_master.set(ControlMode.PercentOutput, speed*.8);
+    }
   }
   
   @Override
