@@ -29,7 +29,7 @@ public class RobotMap {
   public static final int drt_gamepad = 0;
   public static final int lft_gamepad = 1;
 
-  public static final int dt_solenoid = 1;
+  public static final int dt_solenoid = 4;
   public static final int lft_solenoid_grab = 7;
   public static final int jp_solenoid = 6;
   public static final int jp2_solenoid = 7;

@@ -1,33 +1,29 @@
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
 import frc.robot.commands.dt_pneu_cmd;
 
 public class dt_pneu_subs extends Subsystem {
 
-  private Solenoid left_gear_shift = new Solenoid(RobotMap.dt_solenoid);
-  private Solenoid right_gear_shift = new Solenoid(RobotMap.dt_solenoid);
+  private DoubleSolenoid left_gear_shift = new DoubleSolenoid(2,3);
+  private boolean drivetrain_toggle = false;
 
-  
   public dt_pneu_subs() {
     //compressor.setClosedLoopControl(true);
   }
 
   public void toggleGearShift() {
-    left_gear_shift.set(!left_gear_shift.get());
-    right_gear_shift.set(!right_gear_shift.get());
-  }
-/*
-  public void toggle_compressor() {
-    if (compressor.enabled()) {
-      compressor.stop();
-    } 
-    else {
-      compressor.start();
+    if (drivetrain_toggle) {
+      drivetrain_toggle = !drivetrain_toggle;
+      left_gear_shift.set(Value.kForward);
     }
-  }*/
+    else {
+      drivetrain_toggle = !drivetrain_toggle;
+      left_gear_shift.set(Value.kReverse);
+    }
+  }
 
   @Override
   public void initDefaultCommand() {
