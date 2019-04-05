@@ -10,9 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
 import frc.robot.commands.jump_cmd;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 
 /**
@@ -24,6 +22,10 @@ public class jump_subs extends Subsystem {
 
   private DoubleSolenoid theDumbIdea = new DoubleSolenoid(6,7);
   
+  public jump_subs() {
+    theDumbIdea.set(Value.kReverse);
+  }
+
   public void kamikaze() {
     theDumbIdea.set(Value.kForward);
 

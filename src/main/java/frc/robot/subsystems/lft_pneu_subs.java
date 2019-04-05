@@ -10,7 +10,6 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import frc.robot.RobotMap;
 import frc.robot.commands.lft_pneu_cmd;
 
 /**
@@ -23,6 +22,10 @@ public class lft_pneu_subs extends Subsystem {
   private DoubleSolenoid grabber = new DoubleSolenoid(0,1);
   private boolean is_enabled = false;
   
+  public lft_pneu_subs() {
+    grabber.set(Value.kReverse);
+  }
+
   public void toggle_grabber() {
     if (is_enabled) {
       grabber.set(Value.kReverse);

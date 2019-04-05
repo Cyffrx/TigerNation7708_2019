@@ -20,9 +20,21 @@ public class drivetrain_cmd extends Command {
   @Override
   protected void execute() {
 
-    double move = Robot.m_oi.drt_gamepad.getY(Hand.kLeft);
-    double turn = Robot.m_oi.drt_gamepad.getX(Hand.kRight);
-    
+    double move ;// = Robot.m_oi.drt_gamepad.getY(Hand.kLeft);
+    double turn ;// = Robot.m_oi.drt_gamepad.getX(Hand.kRight);
+
+    if (
+        Robot.m_oi.lft_gamepad.getTriggerAxis(Hand.kLeft) > 0 ||
+        Robot.m_oi.lft_gamepad.getTriggerAxis(Hand.kRight) > 0
+      ) {
+      turn = (Robot.m_oi.lft_gamepad.getTriggerAxis(Hand.kLeft) > Robot.m_oi.lft_gamepad.getTriggerAxis(Hand.kRight)) 
+        ? Robot.m_oi.lft_gamepad.getTriggerAxis(Hand.kLeft)*-.3 :
+        Robot.m_oi.lft_gamepad.getTriggerAxis(Hand.kRight)*.3;
+        move = 0;
+    } else {
+        move = Robot.m_oi.drt_gamepad.getY(Hand.kLeft);
+        turn = Robot.m_oi.drt_gamepad.getX(Hand.kRight);
+    }
     Robot.drivetrain_subsys.cheezy_scheme(move, turn);
   }
 

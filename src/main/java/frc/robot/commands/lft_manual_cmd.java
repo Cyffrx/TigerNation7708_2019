@@ -27,10 +27,19 @@ public class lft_manual_cmd extends Command {
         Robot.m_oi.lft_gamepad.getBumper(Hand.kLeft)
     );*/
 
-    if (Math.abs(Robot.m_oi.lft_gamepad.getY(Hand.kLeft)) <= .15) {
-      Robot.lift_subsys.set_lift(-Robot.m_oi.lft_gamepad.getY(Hand.kRight)*.8);
+    if (Math.abs(Robot.m_oi.lft_gamepad.getY(Hand.kLeft)) <= .10) {
+      if (Robot.m_oi.lft_gamepad.getY(Hand.kLeft) < 0) {
+        Robot.lift_subsys.set_lift(Robot.m_oi.lft_gamepad.getY(Hand.kRight)*-.9);
+      } else {
+        Robot.lift_subsys.set_lift(Robot.m_oi.lft_gamepad.getY(Hand.kRight)*-.8);
+      }
+      
     } else {
-      Robot.lift_subsys.set_lift(-Robot.m_oi.lft_gamepad.getY(Hand.kLeft)*.4);
+      if (Robot.m_oi.lft_gamepad.getY(Hand.kLeft) < 0) {
+        Robot.lift_subsys.set_lift(Robot.m_oi.lft_gamepad.getY(Hand.kRight)*.5);
+      } else {
+        Robot.lift_subsys.set_lift(Robot.m_oi.lft_gamepad.getY(Hand.kRight)*.4);
+      };
     }
 
   }

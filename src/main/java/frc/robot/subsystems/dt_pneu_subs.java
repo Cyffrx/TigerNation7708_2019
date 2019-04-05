@@ -7,21 +7,22 @@ import frc.robot.commands.dt_pneu_cmd;
 
 public class dt_pneu_subs extends Subsystem {
 
-  private DoubleSolenoid left_gear_shift = new DoubleSolenoid(2,3);
+  private DoubleSolenoid rearGearShift = new DoubleSolenoid(2,3);
   private boolean drivetrain_toggle = false;
 
   public dt_pneu_subs() {
+    rearGearShift.set(Value.kReverse);
     //compressor.setClosedLoopControl(true);
   }
 
   public void toggleGearShift() {
     if (drivetrain_toggle) {
       drivetrain_toggle = !drivetrain_toggle;
-      left_gear_shift.set(Value.kForward);
+      rearGearShift.set(Value.kForward);
     }
     else {
       drivetrain_toggle = !drivetrain_toggle;
-      left_gear_shift.set(Value.kReverse);
+      rearGearShift.set(Value.kReverse);
     }
   }
 
