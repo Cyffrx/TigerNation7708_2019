@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.dt_pneu_cmd;
 
 public class dt_pneu_subs extends Subsystem {
@@ -24,6 +25,7 @@ public class dt_pneu_subs extends Subsystem {
       drivetrain_toggle = !drivetrain_toggle;
       rearGearShift.set(Value.kReverse);
     }
+    SmartDashboard.putBoolean("i am speed", drivetrain_toggle);
   }
 
   @Override

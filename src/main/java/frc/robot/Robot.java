@@ -14,14 +14,12 @@ import frc.robot.subsystems.limelight_subs;
 
 public class Robot extends TimedRobot {
   public static OI m_oi;
-  public static drivetrain_subs drivetrain_subsys;
+  public static drivetrain_subs drivetrain_subsys = new drivetrain_subs();
   public static lft_manual_subs lift_subsys = new lft_manual_subs();
-  public static dt_pneu_subs dt_pneu;
-  public static limelight_subs limelight;
-  public static lft_pneu_subs lft_pneums = new lft_pneu_subs(); // these probably need constructors
+  public static dt_pneu_subs dt_pneu = new dt_pneu_subs();
+  public static limelight_subs limelight = new limelight_subs();
+  public static lft_pneu_subs lft_pneums = new lft_pneu_subs();
   public static jump_subs kamikaze = new jump_subs();
-
-//  private Compressor compressor = new Compressor(0); // default pcm id
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
