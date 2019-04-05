@@ -21,13 +21,14 @@ public class lft_manual_subs extends Subsystem {
     lift_slave.follow(lift_master);
   }
 
-  public void set_lift(double speed, boolean turbo) {
-    if (turbo) {
+  public void set_lift(double speed) {
+    lift_master.set(ControlMode.PercentOutput, speed);
+    /*if (turbo) {
       lift_master.set(ControlMode.PercentOutput, speed*.3);
     }
     else {
-      lift_master.set(ControlMode.PercentOutput, speed*.8);
-    }
+      lift_master.set(ControlMode.PercentOutput, speed*.8
+      */
   }
   
   @Override
