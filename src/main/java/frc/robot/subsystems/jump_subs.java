@@ -21,20 +21,24 @@ public class jump_subs extends Subsystem {
   // here. Call these from Commands.
 
   private DoubleSolenoid theDumbIdea = new DoubleSolenoid(6,7);
-  private DoubleSolenoid rearMistakes = new DoubleSolenoid(4,5);
+  private DoubleSolenoid rearMistakes = new DoubleSolenoid(5,4);
   
   public jump_subs() {
     theDumbIdea.set(Value.kReverse);
     rearMistakes.set(Value.kReverse);
   }
 
-  public void kamikaze() {
+  public void front_deploy() {
     theDumbIdea.set(Value.kForward);
+  }
+  public void rear_deploy() {
     rearMistakes.set(Value.kForward);
- 
-    Timer.delay(.27); // prob find a way to gurantee full cycle time
-    
+  }
+
+  public void front_retract() {
     theDumbIdea.set(Value.kReverse);
+  }
+  public void rear_retract() {
     rearMistakes.set(Value.kReverse);
   }
 

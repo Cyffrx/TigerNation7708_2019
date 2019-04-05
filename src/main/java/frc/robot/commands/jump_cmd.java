@@ -21,13 +21,19 @@ public class jump_cmd extends Command {
   @Override
   protected void initialize() {
   }
-
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if (Robot.m_oi.drt_gamepad.getAButtonPressed()) {
-      System.out.println("Pray");
-      Robot.kamikaze.kamikaze();
+    if (Robot.m_oi.drt_gamepad.getAButton()) {
+      Robot.kamikaze.front_deploy();
+    } else {
+      Robot.kamikaze.front_retract();
+    }
+
+    if (Robot.m_oi.drt_gamepad.getBButton()) {
+      Robot.kamikaze.rear_deploy();
+    } else {
+      Robot.kamikaze.rear_retract();
     }
   }
 
