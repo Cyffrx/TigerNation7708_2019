@@ -26,8 +26,8 @@ public class RobotMap {
   public static final int lft_lift_master = 8;
   public static final int lft_lift_slave = 7;
 
-  public static final int drt_gamepad = 0;
-  public static final int lft_gamepad = 1;
+  public static int drt_gamepad = 0;
+  public static int lft_gamepad = 1;
 
   public static final int dt_solenoid = 4;
   public static final int lft_solenoid_grab = 7;

@@ -9,23 +9,41 @@ import frc.robot.commands.dt_pneu_cmd;
 public class dt_pneu_subs extends Subsystem {
 
   private DoubleSolenoid rearGearShift = new DoubleSolenoid(2,3);
-  private boolean drivetrain_toggle = false;
+  private boolean low_gear = false; // false == high gear
 
   public dt_pneu_subs() {
     rearGearShift.set(Value.kReverse);
+    low_gear = false;
+    update_gear();
     //compressor.setClosedLoopControl(true);
   }
 
-  public void toggleGearShift() {
-    if (drivetrain_toggle) {
-      drivetrain_toggle = !drivetrain_toggle;
+  public void gear_override_low() {
+    rearGearShift.set(Value.kForward);
+  }
+
+  public void gear_override_high() {
+    rearGearShift.set(Value.kReverse);
+  }
+
+  private void update_gear() {
+    if (low_gear) {
       rearGearShift.set(Value.kForward);
-    }
-    else {
-      drivetrain_toggle = !drivetrain_toggle;
+    } else {
       rearGearShift.set(Value.kReverse);
     }
-    SmartDashboard.putBoolean("i am speed", drivetrain_toggle);
+    SmartDashboard.putBoolean("High Speed", !low_gear);
+    SmartDashboard.putBoolean("High Push", low_gear);
+  }
+
+  public void toggleGear() {
+    if (low_gear) {
+      low_gear = false;
+    }
+    else {
+      low_gear = true;
+    }
+    update_gear();
   }
 
   @Override

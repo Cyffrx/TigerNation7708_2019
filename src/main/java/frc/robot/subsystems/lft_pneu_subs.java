@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.lft_pneu_cmd;
 
 /**
@@ -20,12 +21,13 @@ public class lft_pneu_subs extends Subsystem {
   // here. Call these from Commands.
 
   private DoubleSolenoid grabber = new DoubleSolenoid(0,1);
-  private boolean is_enabled = false;
+  private boolean is_enabled = true;
   
   public lft_pneu_subs() {
     grabber.set(Value.kReverse);
+    SmartDashboard.putBoolean("Holding", is_enabled);
   }
-
+  
   public void toggle_grabber() {
     if (is_enabled) {
       grabber.set(Value.kReverse);
@@ -35,9 +37,10 @@ public class lft_pneu_subs extends Subsystem {
       grabber.set(Value.kForward);
       is_enabled = !is_enabled;
     }
-    System.out.println("Toggling Grabber");
+    SmartDashboard.updateValues();
   }
-
+  
+  
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

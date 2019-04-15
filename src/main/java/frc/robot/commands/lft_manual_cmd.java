@@ -21,29 +21,14 @@ public class lft_manual_cmd extends Command {
   @Override
   protected void execute() {
 
-    /*Robot.lift_subsys.set_lift(
-      (Robot.m_oi.lft_gamepad.getTriggerAxis(Hand.kLeft) > 0) ? 
-        -Robot.m_oi.lft_gamepad.getTriggerAxis(Hand.kLeft) : Robot.m_oi.lft_gamepad.getTriggerAxis(Hand.kRight),
-        Robot.m_oi.lft_gamepad.getBumper(Hand.kLeft)
-    );*/
-
-    if (Math.abs(Robot.m_oi.lft_gamepad.getY(Hand.kLeft)) <= .10) {
-      if (Robot.m_oi.lft_gamepad.getY(Hand.kLeft) < 0) {
-        Robot.lift_subsys.set_lift(Robot.m_oi.lft_gamepad.getY(Hand.kRight)*-.9);
-      } else {
-        Robot.lift_subsys.set_lift(Robot.m_oi.lft_gamepad.getY(Hand.kRight)*-.8);
-      }
-      
-    } else {
-      if (Robot.m_oi.lft_gamepad.getY(Hand.kLeft) < 0) {
-        Robot.lift_subsys.set_lift(Robot.m_oi.lft_gamepad.getY(Hand.kRight)*.5);
-      } else {
-        Robot.lift_subsys.set_lift(Robot.m_oi.lft_gamepad.getY(Hand.kRight)*.4);
-      };
-    }
-
+    Robot.lift_subsys.set_lift(
+      (Math.abs(Robot.m_oi.lft_gamepad.getY(Hand.kLeft)) > Math.abs(Robot.m_oi.lft_gamepad.getY(Hand.kRight))) 
+      ?
+      Robot.m_oi.lft_gamepad.getY(Hand.kLeft)*-.5
+      :
+      Robot.m_oi.lft_gamepad.getY(Hand.kRight)*-.75
+    );
   }
-
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {

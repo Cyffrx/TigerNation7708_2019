@@ -45,9 +45,6 @@ public class drivetrain_subs extends Subsystem {
   }
   
   public void cheezy_scheme(double move, double turn) {
-    
-    SmartDashboard.putNumber("move", move);
-    
 
     drive.curvatureDrive(
       move,

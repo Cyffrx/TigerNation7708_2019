@@ -1,16 +1,19 @@
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.drivetrain_subs;
 import frc.robot.subsystems.dt_pneu_subs;
 import frc.robot.subsystems.jump_subs;
 import frc.robot.subsystems.lft_manual_subs;
 import frc.robot.subsystems.lft_pneu_subs;
 import frc.robot.subsystems.limelight_subs;
+import frc.robot.subsystems.oversubs;
 
 public class Robot extends TimedRobot {
   public static OI m_oi;
@@ -20,6 +23,7 @@ public class Robot extends TimedRobot {
   public static limelight_subs limelight = new limelight_subs();
   public static lft_pneu_subs lft_pneums = new lft_pneu_subs();
   public static jump_subs kamikaze = new jump_subs();
+  public static oversubs master_override;
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();

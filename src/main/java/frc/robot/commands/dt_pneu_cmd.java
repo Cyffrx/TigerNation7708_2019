@@ -20,7 +20,13 @@ public class dt_pneu_cmd extends Command {
   @Override
   protected void execute() {
     if (Robot.m_oi.drt_gamepad.getBumperPressed(Hand.kLeft)) {
-      Robot.dt_pneu.toggleGearShift();
+      Robot.dt_pneu.toggleGear();
+    }
+    if (Robot.m_oi.lft_gamepad.getAButtonPressed()) {
+      Robot.dt_pneu.gear_override_low();
+    }
+    else if (Robot.m_oi.lft_gamepad.getBButtonPressed()) {
+      Robot.dt_pneu.gear_override_high();
     }
   }
 
