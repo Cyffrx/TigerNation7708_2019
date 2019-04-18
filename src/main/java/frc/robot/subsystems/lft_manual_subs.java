@@ -4,6 +4,7 @@ import frc.robot.RobotMap;
 import frc.robot.commands.lft_manual_cmd;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
@@ -18,17 +19,12 @@ public class lft_manual_subs extends Subsystem {
   public VictorSPX lift_slave = new VictorSPX(RobotMap.lft_lift_master);
 
   public lft_manual_subs() {  
+    lift_master.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
     lift_slave.follow(lift_master);
   }
 
   public void set_lift(double speed) {
     lift_master.set(ControlMode.PercentOutput, speed);
-    /*if (turbo) {
-      lift_master.set(ControlMode.PercentOutput, speed*.3);
-    }
-    else {
-      lift_master.set(ControlMode.PercentOutput, speed*.8
-      */
   }
   
   @Override
